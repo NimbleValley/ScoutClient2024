@@ -1,0 +1,265 @@
+body,
+html {
+    background-color: rgb(47, 47, 61);
+    font-family: 'Poppins', sans-serif;
+    user-select: none;
+    overflow-x: hidden;
+    margin: 0;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.selector {
+    touch-action: manipulation;
+}
+
+.section {
+    width: 100vw;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: column;
+    margin-bottom: 5vh;
+    top: 0;
+    position: absolute;
+    overflow-x: hidden;
+}
+
+h1 {
+    font-size: 14vw;
+    color: white;
+    margin-bottom: 7vh;
+    margin-top: 2vh;
+}
+
+h2 {
+    font-size: 8vw;
+    color: rgb(224, 221, 215);
+    margin: 2vw;
+}
+
+h3 {
+    font-size: 6vw;
+    color: rgb(184, 178, 178);
+}
+
+p {
+    font-size: 10vw;
+    margin: 0;
+    color: rgb(184, 178, 178);
+    transform: rotate(90deg) translate(32vh, 0vw);
+    width: 15vw;
+    height: 15vw;
+    max-width: 9vh;
+    max-height: 9vh;
+}
+
+select {
+    background-color: rgb(184, 178, 178);
+    font-size: 6vw;
+    color: black;
+    padding: 2vw 5vw 2vw 5vw;
+    border: 1vw solid rgb(235, 229, 229);
+    border-radius: 1vw;
+}
+
+select:hover {
+    filter: brightness(0.75);
+    cursor: pointer;
+}
+
+input {
+    background-color: rgb(184, 178, 178);
+    font-size: 6vw;
+    color: black;
+    padding: 2vw 5vw 2vw 5vw;
+    border: 1vw solid rgb(235, 229, 229);
+    border-radius: 1vw;
+}
+
+input:hover {
+    filter: brightness(0.75);
+    cursor: pointer;
+}
+
+option {
+    font-size: 3vh;
+    text-align: center;
+}
+
+textarea {
+    background-color: rgb(184, 178, 178);
+    font-size: 4vw;
+    color: black;
+    border: 1vw solid rgb(235, 229, 229);
+    border-radius: 1vw;
+    font-family: 'Poppins', sans-serif;
+    max-width: 90vw;
+}
+
+#start-button {
+    background-color: rgb(207, 200, 190);
+    font-size: 10vw;
+    padding: 2.5vw 7vw 2.5vw 7vw;
+    border-radius: 1vw;
+    border: 1vw solid white;
+    font-weight: 400;
+    margin-top: 10vh;
+    margin-bottom: 5vh;
+}
+
+#start-button:hover {
+    filter: brightness(0.75);
+    cursor: pointer;
+}
+
+.section-button {
+    background-color: rgb(207, 200, 190);
+    font-size: 8vw;
+    padding: 2vw 6vw 2vw 6vw;
+    border-radius: 1vw;
+    border: 1vw solid white;
+    font-weight: 400;
+    margin-top: 10vh;
+    margin-bottom: 5vh;
+}
+
+
+.section-button:hover {
+    filter: brightness(0.75);
+    cursor: pointer;
+}
+
+button {
+    background-color: rgb(207, 200, 190);
+    font-size: 8vw;
+    padding: 2vw 6vw 2vw 6vw;
+    border-radius: 1vw;
+    border: 1vw solid white;
+    font-weight: 400;
+    margin-top: 10vh;
+    margin-bottom: 5vh;
+    font-family: 'Poppins', sans-serif;
+}
+
+button:hover {
+    filter: brightness(0.75);
+    cursor: pointer;
+}
+
+form {
+    padding: 0;
+    height: 100%;
+    font-size: 8vw;
+    margin: 0;
+}
+
+.button-container {
+    display: flex;
+    justify-content: space-around;
+    width: 100vw;
+}
+
+#grid-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100vw;
+    flex-direction: column;
+}
+
+.grid-row {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.grid-section {
+    display: flex;
+    width: 80vw;
+    justify-content: space-around;
+    border-radius: 3vw;
+}
+
+.grid-node-auto {
+    width: 15vh;
+    height: 15vh;
+    margin: 1vw;
+    background-color: rgb(196, 190, 184);
+    border-radius: 1vw;
+    transition: background-color 0.25s;
+    border: 1.5vw solid transparent;
+}
+
+.grid-node-auto:hover {
+    filter: brightness(0.75);
+    cursor: pointer;
+}
+
+.grid-node-tele {
+    width: 15vh;
+    height: 15vh;
+    margin: 1vw;
+    background-color: rgb(196, 190, 184);
+    border-radius: 1vw;
+    transition: background-color 0.25s;
+    border: 1.5vw solid transparent;
+}
+
+.grid-node-tele:hover {
+    filter: brightness(0.75);
+    cursor: pointer;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+}
+
+.checkbox-label {
+    display: flex;
+    margin-top: 5vh;
+    align-items: center;
+    justify-content: center;
+}
+
+.check {
+    width: 7.5vw;
+    height: 7.5vw;
+    margin-left: 5vw;
+    background-color: rgb(93, 94, 95);
+    border-radius: 1vw;
+    border: 1vw solid rgb(194, 189, 181);
+    transition: background-color 0.25s;
+}
+
+.check:hover {
+    filter: brightness(0.75);
+    cursor: pointer;
+}
+
+.checkbox-label {
+    background-color: rgb(66, 66, 66);
+    padding: 2.5vw;
+    border-radius: 2vw;
+}
+
+#respect-your-elders-image {
+    width: 100vw;
+    object-fit: cover;
+}
+
+#fat {
+    transform: scale(0.35);
+    position: absolute;
+    height: fit-content;
+    width: fit-content;
+    top: 0;
+    left: 32.5vw;
+}

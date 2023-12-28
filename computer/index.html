@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="user-scalable=no">
+    <title>ScoutClient2023</title>
+    <link rel="stylesheet" href="style-computer.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.3/gsap.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400&display=swap" rel="stylesheet">
+
+    <meta name="viewport"
+        content="width = device-width, initial-scale = 1.0, minimum-scale = 1, maximum-scale = 1, user-scalable = no" />
+</head>
+
+<body>
+    <div id="fat">
+        <div id="welcome-section" class="section">
+            <h1>Scout Form</h1>
+            <!--<button id="authorize_button" onclick="handleAuthClick()">Authorize</button>
+        <button id="signout_button" onclick="handleSignoutClick()">Sign Out</button>-->
+            <div id="start-button" class="section-button" onclick="switchSection(0, 1);">Start</div>
+            <h3>FRC 2022-23</h3>
+        </div>
+        <div id="general-section" class="section">
+            <h1>General Info</h1>
+            <div class="container">
+                <h2>Alliance:</h2>
+                <select name="alliance" id="alliance-select">
+                    <option value="B1">Blue 1</option>
+                    <option value="B2">Blue 2</option>
+                    <option value="B3">Blue 3</option>
+                    <option value="R1">Red 1</option>
+                    <option value="R2">Red 2</option>
+                    <option value="R3">Red 3</option>
+                </select>
+            </div>
+            <div class="container">
+                <h2>Match Number:</h2>
+                <input type="number" id="match-input" min="0" max="150">
+            </div>
+            <div class="container">
+                <h2>Team Number:</h2>
+                <input type="number" id="team-input" min="1" max="9999">
+            </div>
+            <div class="container">
+                <h2>Name:</h2>
+                <input type="text" id="name-input">
+            </div>
+            <div class="button-container">
+                <div class="section-button" onclick="switchSection(1, 0)">Back</div>
+                <div class="section-button" onclick="switchSection(1, 2)">Next</div>
+            </div>
+        </div>
+        <div id="auto-grid-section" class="section">
+            <h1>Auto</h1>
+
+            <div class="button-container grid-container-full">
+                <div id="grid-container">
+
+                </div>
+                <p>High</p>
+            </div>
+
+            <div class="checkbox-label" id="auto-tech-check">
+                <h2>Tech Foul</h2>
+                <div id="auto-tech-checkbox" class="check"></div>
+            </div>
+
+            <div class="checkbox-label" id="auto-mobility-check">
+                <h2>Mobility</h2>
+                <div id="auto-mobility-checkbox" class="check"></div>
+            </div>
+
+            <div class="checkbox-label" id="auto-charge-check">
+                <h2>Tried Charge</h2>
+                <div id="auto-charge-checkbox" class="check"></div>
+            </div>
+
+            <div class="container" id="auto-charge-container" style="margin-top: 5vh">
+                <h2>Charge Outcome:</h2>
+                <select name="auto-charge" id="auto-charge">
+                    <option value="No">Failed</option>
+                    <option value="Docked">Docked</option>
+                    <option value="Engaged">Engaged</option>
+                </select>
+            </div>
+
+            <div class="checkbox-label" id="auto-success-check">
+                <h2>Auto Successful</h2>
+                <div id="auto-success-checkbox" class="check"></div>
+            </div>
+
+            <div class="button-container">
+                <div class="section-button" onclick="switchSection(2, 1)">Back</div>
+                <div class="section-button" onclick="switchSection(2, 3); setUpTeleGrid()">Next</div>
+            </div>
+        </div>
+        <div id="tele-section" class="section">
+            <h1>Teleop</h1>
+
+            <div class="button-container grid-container-full">
+                <div id="tele-grid-container">
+
+                </div>
+                <p>High</p>
+            </div>
+
+            <h1 style="margin-bottom: 0vh;">Issues</h1>
+
+            <div class="checkbox-label" id="tele-tech-check">
+                <h2>Tech Foul</h2>
+                <div id="tele-tech-checkbox" class="check"></div>
+            </div>
+
+            <div class="checkbox-label" id="tele-flip-check">
+                <h2>Flipped</h2>
+                <div id="tele-flip-checkbox" class="check"></div>
+            </div>
+
+            <div class="checkbox-label" id="tele-comms-check">
+                <h2>Lost Comms</h2>
+                <div id="tele-comms-checkbox" class="check"></div>
+            </div>
+
+            <div class="checkbox-label" id="tele-disabled-check">
+                <h2>Disabled</h2>
+                <div id="tele-disabled-checkbox" class="check"></div>
+            </div>
+
+            <h1 style="margin-bottom: 0vh;">Endgame</h1>
+
+            <div class="checkbox-label" id="tele-charge-check">
+                <h2>Charged</h2>
+                <div id="tele-charge-checkbox" class="check"></div>
+            </div>
+
+            <div class="checkbox-label" id="tele-park-check">
+                <h2>Parked</h2>
+                <div id="tele-park-checkbox" class="check"></div>
+            </div>
+
+            <div class="container" id="tele-charge-container" style="margin-top: 5vh">
+                <h2>Charge Outcome:</h2>
+                <select name="tele-charge" id="tele-charge">
+                    <option value="Docked">Docked</option>
+                    <option value="Engaged">Engaged</option>
+                </select>
+            </div>
+
+            <div class="button-container">
+                <div class="section-button" onclick="switchSection(3, 2)">Back</div>
+                <div class="section-button" onclick="switchSection(3, 4)">Next</div>
+            </div>
+        </div>
+        <div id="comments-section" class="section">
+            <h1 style="text-align: center;">Final Comments (Include auto routine)</h1>
+
+            <textarea cols="25" rows="9" id="comments-area"></textarea>
+
+            <div class="checkbox-label" id="dumb-check">
+                <h2>Unintelligent</h2>
+                <div id="dumb-checkbox" class="check"></div>
+            </div>
+
+            <div class="checkbox-label" id="reckless-check">
+                <h2>Reckless</h2>
+                <div id="reckless-checkbox" class="check"></div>
+            </div>
+
+            <div class="button-container">
+                <div class="section-button" onclick="switchSection(4, 3)">Back</div>
+                <form id="scout-form">
+                    <button class="section-button" id="submit-button" type="submit"
+                        onclick="switchSection(4, 5)">Submit</button>
+                </form>
+            </div>
+        </div>
+        <div id="tylenol-section" class="section">
+            <h1 style="text-align: center;">Submitting Response...</h1>
+            <h3>While you wait, enjoy this image.</h3>
+            <img id="respect-your-elders-image" src="img/sherril5.png" alt="Won't load :(">
+        </div>
+    </div>
+</body>
+<script src="../index.js"></script>
+<script src="../post.js"></script>
+<!--
+<script async defer src="https://apis.google.com/js/api.js" onload="gapiLoaded()"></script>
+<script async defer src="https://accounts.google.com/gsi/client" onload="gisLoaded()"></script>-->
+
+</html>
