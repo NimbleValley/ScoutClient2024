@@ -6,12 +6,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="viewport" content="user-scalable=no">
-    <title>ScoutClient2023</title>
+    <title>ScoutClient2024</title>
     <link rel="stylesheet" href="styles.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.3/gsap.min.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="img/icon.png" />
 
     <meta name="viewport"
         content="width = device-width, initial-scale = 1.0, minimum-scale = 1, maximum-scale = 1, user-scalable = no" />
@@ -20,11 +21,10 @@
 <body>
     <div id="welcome-section" class="section">
         <h1>Scout Form</h1>
-        <!--<button id="authorize_button" onclick="handleAuthClick()">Authorize</button>
-        <button id="signout_button" onclick="handleSignoutClick()">Sign Out</button>-->
         <div id="start-button" class="section-button" onclick="switchSection(0, 1);">Start</div>
-        <h3>FRC 2023</h3>
+        <h3>Hexhounds 2024</h3>
     </div>
+
     <div id="general-section" class="section">
         <h1>General Info</h1>
         <div class="container">
@@ -38,18 +38,22 @@
                 <option value="R3">Red 3</option>
             </select>
         </div>
+
         <div class="container">
             <h2>Match Number:</h2>
-            <input type="number" id="match-input" min="0" max="150">
+            <input type="number" id="match-input" min="0" max="150" inputmode="numeric">
         </div>
+
         <div class="container">
             <h2>Team Number:</h2>
-            <input type="number" id="team-input" min="1" max="9999">
+            <input type="number" id="team-input" min="1" max="9999" inputmode="numeric">
         </div>
+
         <div class="container">
             <h2>Name:</h2>
             <input type="text" id="name-input">
         </div>
+
         <div class="button-container">
             <div class="section-button" onclick="switchSection(1, 0)">Back</div>
             <div class="section-button" onclick="switchSection(1, 2)">Next</div>
@@ -57,13 +61,6 @@
     </div>
     <div id="auto-grid-section" class="section">
         <h1>Auto</h1>
-
-        <div class="button-container grid-container-full">
-            <div id="grid-container">
-
-            </div>
-            <p>High</p>
-        </div>
 
         <div class="checkbox-label" id="piece-miss-button-container">
             <h2 id="auto-dropped=pieces-text">Missed Pieces: 0</h2>
@@ -83,34 +80,13 @@
             <div id="auto-mobility-checkbox" class="check"></div>
         </div>
 
-        <div class="checkbox-label" id="auto-charge-check">
-            <h2>Tried Charge</h2>
-            <div id="auto-charge-checkbox" class="check"></div>
-        </div>
-
-        <div class="container" id="auto-charge-container" style="margin-top: 5vh">
-            <h2>Charge Outcome:</h2>
-            <select name="auto-charge" id="auto-charge">
-                <option value="No">Failed (Slid off)</option>
-                <option value="Docked">Docked (Tilted)</option>
-                <option value="Engaged">Engaged (Flat)</option>
-            </select>
-        </div>
-
         <div class="button-container">
             <div class="section-button" onclick="switchSection(2, 1)">Back</div>
-            <div class="section-button" onclick="switchSection(2, 3); setUpTeleGrid()">Next</div>
+            <div class="section-button" onclick="switchSection(2, 3);">Next</div>
         </div>
     </div>
     <div id="tele-section" class="section">
         <h1>Teleop</h1>
-
-        <div class="button-container grid-container-full">
-            <div id="tele-grid-container">
-
-            </div>
-            <p>High</p>
-        </div>
 
         <div class="checkbox-label" id="piece-miss-button-container">
             <h2 id="tele-dropped=pieces-text">Missed Pieces: 0</h2>
@@ -154,22 +130,9 @@
 
         <h1 style="margin-bottom: 0vh;">Endgame</h1>
 
-        <div class="checkbox-label" id="tele-charge-check">
-            <h2>Charged</h2>
-            <div id="tele-charge-checkbox" class="check"></div>
-        </div>
-
         <div class="checkbox-label" id="tele-park-check">
             <h2>Parked</h2>
             <div id="tele-park-checkbox" class="check"></div>
-        </div>
-
-        <div class="container" id="tele-charge-container" style="margin-top: 5vh">
-            <h2>Charge Outcome:</h2>
-            <select name="tele-charge" id="tele-charge">
-                <option value="Docked">Docked (Tilted)</option>
-                <option value="Engaged">Engaged (Flat)</option>
-            </select>
         </div>
 
         <div class="button-container">
