@@ -1,2 +1,2 @@
-# ScoutClient2023
-Client side for Scouting2023
+# ScoutClient2024
+Client side for Scouting2024
