@@ -132,27 +132,15 @@ async function switchSection(current, next) {
     sections[next].style.display = "flex";
 
     if (next > current) {
-        tl.fromTo(sections[next], { transform: "translate(60vw, 0vh) scale(0.45) rotate(7.5deg)", opacity: 0 }, { transform: "", opacity: 1, duration: 0.5, ease: "power2" }, "-=0.35");
+        tl.fromTo(sections[next], { transform: "translate(60vw, 0vh) scale(0.45) rotate(7.5deg)", opacity: 0 }, { transform: "", opacity: 1, duration: 0.5, ease: "power2" }, "-=0.45");
     } else {
-        tl.fromTo(sections[next], { transform: "translate(-60vw, 0vh) scale(0.45) rotate(-7.5deg)", opacity: 0 }, { transform: "", opacity: 1, duration: 0.5, ease: "power2" }, "-=0.35");
+        tl.fromTo(sections[next], { transform: "translate(-60vw, 0vh) scale(0.45) rotate(-7.5deg)", opacity: 0 }, { transform: "", opacity: 1, duration: 0.5, ease: "power2" }, "-=0.45");
     }
     await sleep(500);
     sections[current].style.display = "none";
 }
 
 // ---- SELECT CALLBACKS ----
-
-allianceSelect.addEventListener("change", function () {
-    if (document.getElementById("alliance-select").value.substring(0, 1) == "R") {
-        for (var i = 0; i < grids.length; i++) {
-            grids[i].style.transform = "rotate(180deg)";
-        }
-    } else {
-        for (var i = 0; i < grids.length; i++) {
-            grids[i].style.transform = "rotate(0deg)";
-        }
-    }
-});
 
 autoMobilityCheck.addEventListener("click", function () {
     autoMobility = !autoMobility;
