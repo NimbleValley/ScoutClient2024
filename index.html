@@ -20,7 +20,7 @@
 
 <body>
     <div id="welcome-section" class="section">
-        <h1>Crescendo Scout Form</h1>
+        <h1 id="main-title">Crescendo Scout Form</h1>
         <div id="start-button" class="section-button" onclick="switchSection(0, 1);">Start</div>
         <h3>Hexhounds 2024</h3>
     </div>
@@ -62,11 +62,40 @@
     <div id="auto-grid-section" class="section">
         <h1>Auto</h1>
 
-        <div class="checkbox-label" id="piece-miss-button-container">
-            <h2 id="auto-dropped=pieces-text">Missed Pieces: 0</h2>
+        <h4>Click what notes the attempted to intake in auto:</h4>
+        <div id="auto-image-container">
+            <div id="note-auto-button-container">
+                <div id="note-button-vertical-container-center">
+                    <button class="note-auto-button" id="3"></button>
+                    <button class="note-auto-button" id="4"></button>
+                    <button class="note-auto-button" id="5"></button>
+                    <button class="note-auto-button" id="6"></button>
+                    <button class="note-auto-button" id="7"></button>
+                </div>
+                <div id="note-button-vertical-container-end">
+                    <button class="note-auto-button" id="0"></button>
+                    <button class="note-auto-button" id="1"></button>
+                    <button class="note-auto-button" id="2"></button>
+
+                </div>
+            </div>
+            <img id="auto-note-image" src="img/bluefield24.jpg" alt="SKIP THIS IF YOU CAN'T SEE IT.">
+        </div>
+        <h5>(Click notes to toggle, green indicates successful intake, red indicates missed intake)</h5>
+
+        <div class="checkbox-label" id="auto-shot-made-button-container">
+            <h2 id="auto-made-shots-text">Made Shots: 0</h2>
             <div class="horizontal-container">
-                <button class="piece-miss-button" id="auto-dropped-pieces-plus-button" onclick="autoDroppedPieceUpdate(1)">+</button>
-                <button class="piece-miss-button" id="auto-dropped-pieces-minus-button" onclick="autoDroppedPieceUpdate(-1)">-</button>
+                <button class="auto-shot-miss-button" id="auto-made-shot-plus-button" onclick="autoMadePieceUpdate(1)">+</button>
+                <button class="auto-shot-miss-button" id="auto-made-shot-minus-button" onclick="autoMadePieceUpdate(-1)">-</button>
+            </div>
+        </div>
+
+        <div class="checkbox-label" id="auto-shot-miss-button-container">
+            <h2 id="auto-missed-shots-text">Missed Shots: 0</h2>
+            <div class="horizontal-container">
+                <button class="auto-shot-miss-button" id="auto-miss-shot-plus-button" onclick="autoMissedPieceUpdate(1)">+</button>
+                <button class="auto-shot-miss-button" id="auto-miss-shot-minus-button" onclick="autoMissedPieceUpdate(-1)">-</button>
             </div>
         </div>
 

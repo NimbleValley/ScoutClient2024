@@ -18,6 +18,54 @@ html {
     overflow-x: hidden;
 }
 
+#main-title {
+    width: 85vw;
+    position: relative;
+}
+
+#main-title::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 5%;
+    left: 0;
+    top: 0;
+    background-color: #00D586;
+    animation: title-slime 2s infinite alternate;
+    z-index: -5;
+}
+
+@keyframes title-slime {
+    0% {
+        top: 0%;
+        height: 5%;
+    }
+
+    27.5% {
+        height: 5%;
+    }
+
+    50% {
+        height: 100%;
+        top: 0%;
+    }
+
+    72.5% {
+        height: 5%;
+        top: 95%;
+    }
+
+    75% {
+        top: 95%;
+        height: 5%;
+    }
+
+    100% {
+        top: 95%;
+        height: 5%;
+    }
+}
+
 .selector {
     touch-action: manipulation;
 }
@@ -53,6 +101,20 @@ h3 {
     color: rgb(245, 178, 78);
     font-family: BDNippori;
     font-weight: 100;
+}
+
+h4 {
+    font-size: 5vw;
+    color: rgb(224, 221, 215);
+    margin: 1vw;
+    text-align: center;
+}
+
+h5 {
+    font-size: 3.5vw;
+    color: rgb(224, 221, 215);
+    margin: 1vw;
+    text-align: center;
 }
 
 p {
@@ -148,7 +210,7 @@ form {
     justify-content: space-around;
 }
 
-.piece-miss-button {
+.auto-shot-miss-button {
     margin: 0;
     font-size: 12vw;
     padding: 0;
@@ -160,7 +222,24 @@ form {
     background-color: #5D5E5F;
 }
 
-#piece-miss-button-container {
+#auto-shot-miss-button-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.auto-shot-made-button {
+    margin: 0;
+    font-size: 12vw;
+    padding: 0;
+    width: 16vw;
+    height: 16vw;
+    line-height: 15vw;
+    color: #C2BDB5;
+    border-color: #C2BDB5;
+    background-color: #5D5E5F;
+}
+
+#auto-shot-made-button-container {
     display: flex;
     flex-direction: column;
 }
@@ -177,44 +256,6 @@ form {
     align-items: center;
     width: 100vw;
     flex-direction: column;
-}
-
-.grid-row {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    align-items: center;
-}
-
-.grid-section {
-    display: flex;
-    width: 80vw;
-    justify-content: space-around;
-    border-radius: 3vw;
-}
-
-.grid-node-auto {
-    width: 15vw;
-    height: 15vw;
-    max-width: 9vh;
-    max-height: 9vh;
-    margin: 1vw;
-    background-color: rgb(196, 190, 184);
-    border-radius: 1vw;
-    transition: background-color 0.25s;
-    border: 1.5vw solid transparent;
-}
-
-.grid-node-tele {
-    width: 15vw;
-    height: 15vw;
-    max-width: 9vh;
-    max-height: 9vh;
-    margin: 1vw;
-    background-color: rgb(196, 190, 184);
-    border-radius: 1vw;
-    transition: background-color 0.25s;
-    border: 1.5vw solid transparent;
 }
 
 .container {
@@ -251,4 +292,50 @@ form {
 #respect-your-elders-image {
     width: 100vw;
     object-fit: cover;
+}
+
+#auto-image-container {
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+}
+
+#auto-note-image {
+    width: 100vw;
+    position: relative;
+}
+
+#note-auto-button-container {
+    display: flex;
+    width: 95vw;
+    justify-content: space-between;
+    z-index: 1000;
+    position: absolute;
+    height: 115vw;
+    scale: -1 1;
+}
+
+#note-button-vertical-container-center {
+    margin-top: 2vw;
+    margin-bottom: 2vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+#note-button-vertical-container-end {
+    margin-top: 7.5vw;
+    margin-right: 1.75vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 59vw;
+}
+
+.note-auto-button {
+    background-color: transparent;
+    margin: 0;
+    width: 17.5vw;
+    height: 17.5vw;
+    border: solid 1vw rgba(255, 255, 255, 0.219);
 }

@@ -9,7 +9,7 @@ const autoChargeOutput = document.getElementById("auto-charge");
 
 const scriptURL = "https://script.google.com/macros/s/AKfycbx_KXhLkJ02ADQLSjYrhh3qRcPjA5Dg15CQQQdMBWPEIdZS8XMCryygI_CT70E8r7GJNQ/exec";
 
-const respectInducingImages = ["img/sherril5.jpg", "img/trompmil24.jpg", "img/sherril.jpg", "img/snow.jpg", "img/sherrilwatching.jpg", "img/joseph1.jpg", "img/zachary01.jpg", "img/waytt.jpg", "img/bendi.jpg"];
+const respectInducingImages = ["img/sherril5.jpg", "img/trompmil24.jpg", "img/sherril.jpg", "img/snow.jpg", "img/sherrilwatching.jpg", "img/joseph1.jpg", "img/zachary01.jpg", "img/waytt.jpg", "img/bendi.jpg", "img/hendrick.jpg", "img/hensler.jpg"];
 
 document.addEventListener("keypress", function () {
     //document.getElementById("respect-your-elders-image").src = respectInducingImages[Math.round(Math.random() * (respectInducingImages.length-1))];

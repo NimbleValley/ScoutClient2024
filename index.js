@@ -25,17 +25,51 @@ for (let i = 0; i < sections.length; i++) {
     sections[i].style.display = "none";
 }
 // TODO set this for debugging to set default screen
-sections[0].style.display = "flex";
+sections[2].style.display = "flex";
 
 
 // Alliance select element
 const allianceSelect = document.getElementById("alliance-select");
 
 
+// Auto note pickup
+const autoNoteImage = document.getElementById("auto-note-image");
+const autoNoteContainer = document.getElementById("note-auto-button-container");
+const autoNoteButtons = document.getElementsByClassName("note-auto-button");
+let autoNoteStatus = [];
+for (let i = 0; i < autoNoteButtons.length; i++) {
+    autoNoteStatus.push(0);
+    autoNoteButtons[i].addEventListener("click", function (e) {
+        let id = e.target.id;
+        autoNoteStatus[id]++;
+        if (autoNoteStatus[id] > 2) {
+            autoNoteStatus[id] = 0;
+        }
+        switch (autoNoteStatus[id]) {
+            case 0:
+                e.target.style.backgroundColor = "transparent";
+                break;
+            case 1:
+                e.target.style.backgroundColor = "#2bd50050";
+                
+                break;
+            case 2:
+                e.target.style.backgroundColor = "#d5000050";
+                break;
+            default:
+                console.log("Invalid auto note status :(");
+                break;
+        }
+    });
+}
+
+
 // Auto dropped pieces
-// TODO might need to removed in 2024
-var autoDroppedPieced = 0;
-const autoDroppedPiecesText = document.getElementById("auto-dropped=pieces-text");
+var autoMissedShots = 0;
+const autoMissedPiecesText = document.getElementById("auto-missed-shots-text");
+
+var autoMadeShots = 0;
+const autoMadePiecesText = document.getElementById("auto-made-shots-text");
 
 // Tele dropped pieces
 // TODO might need to removed in 2024
@@ -104,18 +138,18 @@ var onSection = 0;
 
 // Switched section user is on from current to next
 async function switchSection(current, next) {
-    if(next == -1) {
+    if (next == -1) {
         return;
     }
 
-    if(next > 5) {
+    if (next > 5) {
         return;
     }
 
-    if(next > current) {
-        onSection ++;
+    if (next > current) {
+        onSection++;
     } else {
-        onSection --;
+        onSection--;
     }
 
     window.scroll({
@@ -141,6 +175,16 @@ async function switchSection(current, next) {
 }
 
 // ---- SELECT CALLBACKS ----
+
+allianceSelect.addEventListener("change", function () {
+    if (allianceSelect.value.substring(0, 1) == "R") {
+        autoNoteContainer.style.scale = "1 1";
+        autoNoteImage.src = "img/redfield24.jpg";
+    } else {
+        autoNoteContainer.style.scale = "-1 1";
+        autoNoteImage.src = "img/bluefield24.jpg";
+    }
+});
 
 autoMobilityCheck.addEventListener("click", function () {
     autoMobility = !autoMobility;
@@ -278,17 +322,31 @@ recklessCheck.addEventListener("click", function () {
 });
 
 // DROPPED PIECES AUTO update callback
-function autoDroppedPieceUpdate(num) {
-    if(autoDroppedPieced + num < 0) {
+function autoMissedPieceUpdate(num) {
+    if(autoMissedShots + num > 10) {
         return;
     }
-    autoDroppedPieced += num;
-    autoDroppedPiecesText.innerText = `Missed Pieces: ${autoDroppedPieced}`
+    if (autoMissedShots + num < 0) {
+        return;
+    }
+    autoMissedShots += num;
+    autoMissedPiecesText.innerText = `Missed Shots: ${autoMissedShots}`;
+}
+
+function autoMadePieceUpdate(num) {
+    if(autoMadeShots + num > 10) {
+        return;
+    }
+    if (autoMadeShots + num < 0) {
+        return;
+    }
+    autoMadeShots += num;
+    autoMadePiecesText.innerText = `Mase Shots: ${autoMadeShots}`;
 }
 
 // DROPPED PIECES TELE update callback
 function teleDroppedPieceUpdate(num) {
-    if(teleDroppedPieced + num < 0) {
+    if (teleDroppedPieced + num < 0) {
         return;
     }
     teleDroppedPieced += num;
