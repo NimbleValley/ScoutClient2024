@@ -203,4 +203,5 @@ function resetForm() {
     document.getElementById("comments-area").value = "";
 
     onSection = 0;
+    update();
 }

@@ -16,6 +16,7 @@ html {
     user-select: none;
     display: flex;
     overflow-x: hidden;
+    min-height: 100vh;
 }
 
 #main-title {
@@ -29,9 +30,9 @@ html {
     width: 100%;
     height: 5%;
     left: 0;
-    top: 0;
+    bottom: 0;
     background-color: #00D586;
-    animation: title-slime 2s infinite alternate;
+    /*animation: title-slime 2s infinite alternate;*/
     z-index: -5;
 }
 
@@ -210,7 +211,13 @@ form {
     justify-content: space-around;
 }
 
-.auto-shot-miss-button {
+.counter-container {
+    display: flex;
+    flex-direction: column;
+    padding: 0.5vh !important;
+}
+
+.plus-minus-button {
     margin: 0;
     font-size: 12vw;
     padding: 0;
@@ -222,26 +229,8 @@ form {
     background-color: #5D5E5F;
 }
 
-#auto-shot-miss-button-container {
-    display: flex;
-    flex-direction: column;
-}
-
-.auto-shot-made-button {
-    margin: 0;
-    font-size: 12vw;
-    padding: 0;
-    width: 16vw;
-    height: 16vw;
-    line-height: 15vw;
-    color: #C2BDB5;
-    border-color: #C2BDB5;
-    background-color: #5D5E5F;
-}
-
-#auto-shot-made-button-container {
-    display: flex;
-    flex-direction: column;
+.counter-icon {
+    width: 15vw;
 }
 
 .button-container {
@@ -338,4 +327,38 @@ form {
     width: 17.5vw;
     height: 17.5vw;
     border: solid 1vw rgba(255, 255, 255, 0.219);
+}
+
+#amplified-container {
+    animation: amplified 4s infinite;
+}
+
+@keyframes amplified {
+    0% {
+        box-shadow: none;
+    }
+    40% {
+        box-shadow: dodgerblue 0px 0px 10vw;
+    }
+    50% {
+        box-shadow: dodgerblue 0px 0px 10vw;
+    }
+    60% {
+        box-shadow: dodgerblue 0px 0px 10vw;
+    }
+    100% {
+        box-shadow: none;
+    }
+}
+
+#welcome-canvas {
+    z-index: -1;
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+}
+
+#welcome-section {
+    min-height: 100vh;
 }

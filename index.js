@@ -25,7 +25,7 @@ for (let i = 0; i < sections.length; i++) {
     sections[i].style.display = "none";
 }
 // TODO set this for debugging to set default screen
-sections[2].style.display = "flex";
+sections[0].style.display = "flex";
 
 
 // Alliance select element
@@ -51,10 +51,11 @@ for (let i = 0; i < autoNoteButtons.length; i++) {
                 break;
             case 1:
                 e.target.style.backgroundColor = "#2bd50050";
-                
+                forceAutoMobility();
                 break;
             case 2:
                 e.target.style.backgroundColor = "#d5000050";
+                forceAutoMobility();
                 break;
             default:
                 console.log("Invalid auto note status :(");
@@ -65,20 +66,37 @@ for (let i = 0; i < autoNoteButtons.length; i++) {
 
 
 // Auto dropped pieces
-var autoMissedShots = 0;
-const autoMissedPiecesText = document.getElementById("auto-missed-shots-text");
+var autoMissedSpeaker = 0;
+const autoMissedSpeakerText = document.getElementById("auto-missed-speaker-text");
 
-var autoMadeShots = 0;
-const autoMadePiecesText = document.getElementById("auto-made-shots-text");
+var autoMadeSpeaker = 0;
+const autoMadeSpeakerText = document.getElementById("auto-made-speaker-text");
 
-// Tele dropped pieces
-// TODO might need to removed in 2024
-var teleDroppedPieced = 0;
-const teleDroppedPiecesText = document.getElementById("tele-dropped=pieces-text");
+var autoMissedAmp = 0;
+const autoMissedAmpText = document.getElementById("auto-missed-amp-text");
+
+var autoMadeAmp = 0;
+const autoMadeAmpText = document.getElementById("auto-made-amp-text");
+
+
+// Tele shot stuff
+var teleMadeSpeaker = 0;
+const teleMadeSpeakerText = document.getElementById("tele-made-speaker-text");
+
+var teleMadeSpeakerAmplified = 0;
+const teleMadeSpeakerTextAmplified = document.getElementById("tele-made-speaker-amplified-text");
+
+var teleMissedSpeaker = 0;
+const teleMissedSpeakerText = document.getElementById("tele-missed-speaker-text");
+
+var teleMadeAmp = 0;
+const teleMadeAmpText = document.getElementById("tele-made-amp-text");
+
+var teleMissedAmp = 0;
+const teleMissedAmpText = document.getElementById("tele-missed-amp-text");
 
 
 // Auto mobility
-// TODO might need to removed in 2024
 var autoMobility = false;
 const autoMobilityCheck = document.getElementById("auto-mobility-check");
 
@@ -118,6 +136,7 @@ const teleDisabledCheck = document.getElementById("tele-disabled-check");
 var telePark = false;
 const teleParkCheck = document.getElementById("tele-park-check");
 
+const climbSelect = document.getElementById("climb-select");
 
 // Were they dumb
 var dumb = false;
@@ -138,6 +157,7 @@ var onSection = 0;
 
 // Switched section user is on from current to next
 async function switchSection(current, next) {
+
     if (next == -1) {
         return;
     }
@@ -187,8 +207,12 @@ allianceSelect.addEventListener("change", function () {
 });
 
 autoMobilityCheck.addEventListener("click", function () {
+    if(autoNoteStatus.includes(1) || autoNoteStatus.includes(2)) {
+        return;
+    }
+
     autoMobility = !autoMobility;
-    var checkbox = document.getElementById("auto-mobility-checkbox");
+    let checkbox = document.getElementById("auto-mobility-checkbox");
 
     if (autoMobility) {
         checkbox.style.backgroundColor = "#6feb36";
@@ -321,37 +345,124 @@ recklessCheck.addEventListener("click", function () {
     }
 });
 
-// DROPPED PIECES AUTO update callback
-function autoMissedPieceUpdate(num) {
-    if(autoMissedShots + num > 10) {
+
+// AUTO AMP & SPEAKER SHOT CALLBACK
+function autoMissedSpeakerUpdate(num) {
+    if (autoMissedSpeaker + num > 10) {
         return;
     }
-    if (autoMissedShots + num < 0) {
+    if (autoMissedSpeaker + num < 0) {
         return;
     }
-    autoMissedShots += num;
-    autoMissedPiecesText.innerText = `Missed Shots: ${autoMissedShots}`;
+    autoMissedSpeaker += num;
+    autoMissedSpeakerText.innerText = `Missed Speaker: ${autoMissedSpeaker}`;
 }
 
-function autoMadePieceUpdate(num) {
-    if(autoMadeShots + num > 10) {
+function autoMadeSpeakerUpdate(num) {
+    if (autoMadeSpeaker + num > 10) {
         return;
     }
-    if (autoMadeShots + num < 0) {
+    if (autoMadeSpeaker + num < 0) {
         return;
     }
-    autoMadeShots += num;
-    autoMadePiecesText.innerText = `Mase Shots: ${autoMadeShots}`;
+    autoMadeSpeaker += num;
+    autoMadeSpeakerText.innerText = `Mase Speaker: ${autoMadeSpeaker}`;
 }
 
-// DROPPED PIECES TELE update callback
-function teleDroppedPieceUpdate(num) {
-    if (teleDroppedPieced + num < 0) {
+function autoMissedAmpUpdate(num) {
+    if (autoMissedAmp + num > 10) {
         return;
     }
-    teleDroppedPieced += num;
-    teleDroppedPiecesText.innerText = `Missed Pieces: ${teleDroppedPieced}`
+    if (autoMissedAmp + num < 0) {
+        return;
+    }
+    autoMissedAmp += num;
+    autoMissedAmpText.innerText = `Missed Amplifier: ${autoMissedAmp}`;
 }
+
+function autoMadeAmpUpdate(num) {
+    if (autoMadeAmp + num > 10) {
+        return;
+    }
+    if (autoMadeAmp + num < 0) {
+        return;
+    }
+    autoMadeAmp += num;
+    autoMadeAmpText.innerText = `Made Amplifier: ${autoMadeAmp}`;
+}
+
+
+// TELE AMP & SPEAKER SHOT CALLBACK
+function teleMissedSpeakerUpdate(num) {
+    if (teleMissedSpeaker + num > 50) {
+        return;
+    }
+    if (teleMissedSpeaker + num < 0) {
+        return;
+    }
+    teleMissedSpeaker += num;
+    teleMissedSpeakerText.innerText = `Missed Speaker: ${teleMissedSpeaker}`;
+}
+
+function teleMadeSpeakerUpdate(num) {
+    if (teleMadeSpeaker + num > 50) {
+        return;
+    }
+    if (teleMadeSpeaker + num < 0) {
+        return;
+    }
+    teleMadeSpeaker += num;
+    teleMadeSpeakerText.innerText = `Made Speaker: ${teleMadeSpeaker}`;
+}
+
+function teleMadeSpeakerAmplifiedUpdate(num) {
+    if (teleMadeSpeakerAmplified + num > 50) {
+        return;
+    }
+    if (teleMadeSpeakerAmplified + num < 0) {
+        return;
+    }
+    teleMadeSpeakerAmplified += num;
+    teleMadeSpeakerTextAmplified.innerHTML = `Made <span style="color:dodgerblue; text-decoration: underline;">AMPLIFIED</span> Speaker: ${teleMadeSpeakerAmplified}`;
+}
+
+function teleMadeAmpUpdate(num) {
+    if (teleMadeAmp + num > 50) {
+        return;
+    }
+    if (teleMadeAmp + num < 0) {
+        return;
+    }
+    teleMadeAmp += num;
+    teleMadeAmpText.innerText = `Made Amp: ${teleMadeAmp}`;
+}
+
+function teleMissedAmpUpdate(num) {
+    if (teleMissedAmp + num > 50) {
+        return;
+    }
+    if (teleMissedAmp + num < 0) {
+        return;
+    }
+    teleMissedAmp += num;
+    teleMissedAmpText.innerText = `Missed Amp: ${teleMissedAmp}`;
+}
+
+function teleMissedShotUpdate(num) {
+    if (teleMissedShots + num < 0) {
+        return;
+    }
+    teleMissedShots += num;
+    teleMissedShotsText.innerText = `Missed Shots: ${teleMissedShots}`
+}
+
+climbSelect.addEventListener("change", function() {
+    if(climbSelect.value != "Successful") {
+        teleParkCheck.style.display = "flex";
+    } else {
+        teleParkCheck.style.display = "none";
+    }
+});
 
 // Sleep function, pause/delay
 const sleep = (milliseconds) => {
@@ -369,3 +480,11 @@ async function keepScreenOn() {
 }
 
 keepScreenOn();
+
+function forceAutoMobility() {
+    autoMobility = true;
+    let checkbox = document.getElementById("auto-mobility-checkbox");
+    checkbox.style.backgroundColor = "#6feb36";
+    tl.to(checkbox, { scale: 1.25, duration: 0.15, ease: "power2" });
+    tl.to(checkbox, { scale: 1, duration: 0.15, ease: "power2" });
+}
