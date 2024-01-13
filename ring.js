@@ -22,7 +22,6 @@ function update() {
         return;
     }
 
-    console.log(rings.length);
     if (Math.random() < 0.065) {
         rings.push(new Ring());
     }
