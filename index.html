@@ -88,11 +88,12 @@
             <h2 id="auto-made-speaker-text">Made Speaker: 0</h2>
             <div class="horizontal-container">
                 <button class="plus-minus-button" onclick="autoMadeSpeakerUpdate(1)">+</button>
-                <img src="svg/speaker.svg" alt="" class="counter-icon" style="filter: hue-rotate(85deg) brightness(1.5);">
+                <img src="svg/speaker.svg" alt="" class="counter-icon"
+                    style="filter: hue-rotate(85deg) brightness(1.5);">
                 <button class="plus-minus-button" onclick="autoMadeSpeakerUpdate(-1)">-</button>
             </div>
         </div>
-        
+
         <div class="checkbox-label counter-container">
             <h2 id="auto-missed-speaker-text">Missed Speaker: 0</h2>
             <div class="horizontal-container">
@@ -110,7 +111,7 @@
                 <button class="plus-minus-button" onclick="autoMadeAmpUpdate(-1)">-</button>
             </div>
         </div>
-        
+
         <div class="checkbox-label counter-container">
             <h2 id="auto-missed-amp-text">Missed Amplifier: 0</h2>
             <div class="horizontal-container">
@@ -138,15 +139,19 @@
     <div id="tele-section" class="section">
         <h1>Teleop</h1>
 
-        <div class="checkbox-label counter-container">
-            <h2 id="tele-made-speaker-text">Made Speaker: 0</h2>
-            <div class="horizontal-container">
-                <button class="plus-minus-button" onclick="teleMadeSpeakerUpdate(1)">+</button>
-                <img src="svg/speaker.svg" alt="" class="counter-icon" style="filter: hue-rotate(85deg) brightness(1.5);">
-                <button class="plus-minus-button" onclick="teleMadeSpeakerUpdate(-1)">-</button>
-            </div>
-        </div>
+        <div id="scoring-container">
 
+            <div class="checkbox-label counter-container">
+                <h2 id="tele-made-speaker-text">Made Speaker: 0</h2>
+                <div class="horizontal-container">
+                    <button class="plus-minus-button" onclick="teleMadeSpeakerUpdate(1)">+</button>
+                    <img src="svg/speaker.svg" alt="" class="counter-icon"
+                        style="filter: hue-rotate(85deg) brightness(1.5);">
+                    <button class="plus-minus-button" onclick="teleMadeSpeakerUpdate(-1)">-</button>
+                </div>
+            </div>
+
+            <!--
         <div class="checkbox-label counter-container" id="amplified-container">
             <h2 id="tele-made-speaker-amplified-text" style="text-align: center; width: 80vw;">Made <span style="color:dodgerblue; text-decoration: underline;">AMPLIFIED</span> Speaker: 0</h2>
             <div class="horizontal-container">
@@ -155,39 +160,45 @@
                 <button class="plus-minus-button" onclick="teleMadeSpeakerAmplifiedUpdate(-1)">-</button>
             </div>
         </div>
+        -->
 
-        <div class="checkbox-label counter-container">
-            <h2 id="tele-missed-speaker-text">Missed Speaker: 0</h2>
-            <div class="horizontal-container">
-                <button class="plus-minus-button" onclick="teleMissedSpeakerUpdate(1)">+</button>
-                <img src="svg/speaker.svg" alt="" class="counter-icon">
-                <button class="plus-minus-button" onclick="teleMissedSpeakerUpdate(-1)">-</button>
+            <div class="checkbox-label counter-container">
+                <h2 id="tele-missed-speaker-text">Missed Speaker: 0</h2>
+                <div class="horizontal-container">
+                    <button class="plus-minus-button" onclick="teleMissedSpeakerUpdate(1)">+</button>
+                    <img src="svg/speaker.svg" alt="" class="counter-icon">
+                    <button class="plus-minus-button" onclick="teleMissedSpeakerUpdate(-1)">-</button>
+                </div>
             </div>
-        </div>
 
-        <div class="checkbox-label counter-container">
-            <h2 id="tele-made-amp-text">Made Amp: 0</h2>
-            <div class="horizontal-container">
-                <button class="plus-minus-button" onclick="teleMadeAmpUpdate(1)">+</button>
-                <img src="svg/amp.svg" alt="" class="counter-icon" style="filter: hue-rotate(85deg) brightness(1.5);">
-                <button class="plus-minus-button" onclick="teleMadeAmpUpdate(-1)">-</button>
+            <div class="checkbox-label counter-container">
+                <h2 id="tele-made-amp-text">Made Amp: 0</h2>
+                <div class="horizontal-container">
+                    <button class="plus-minus-button" onclick="teleMadeAmpUpdate(1)">+</button>
+                    <img src="svg/amp.svg" alt="" class="counter-icon"
+                        style="filter: hue-rotate(85deg) brightness(1.5);">
+                    <button class="plus-minus-button" onclick="teleMadeAmpUpdate(-1)">-</button>
+                </div>
             </div>
-        </div>
 
-        <div class="checkbox-label counter-container">
-            <h2 id="tele-missed-amp-text">Missed Amp: 0</h2>
-            <div class="horizontal-container">
-                <button class="plus-minus-button" onclick="teleMissedAmpUpdate(1)">+</button>
-                <img src="svg/amp.svg" alt="" class="counter-icon">
-                <button class="plus-minus-button" onclick="teleMissedAmpUpdate(-1)">-</button>
+            <div class="checkbox-label counter-container">
+                <h2 id="tele-missed-amp-text">Missed Amp: 0</h2>
+                <div class="horizontal-container">
+                    <button class="plus-minus-button" onclick="teleMissedAmpUpdate(1)">+</button>
+                    <img src="svg/amp.svg" alt="" class="counter-icon">
+                    <button class="plus-minus-button" onclick="teleMissedAmpUpdate(-1)">-</button>
+                </div>
             </div>
+
         </div>
 
         <div class="container" id="pickup-method-container" style="margin-bottom: 5vh; margin-top: 5vh">
             <h2>Intook Pieces From:</h2>
             <select name="pickup-method" id="pickup-method">
                 <option value="Floor">Floor</option>
-                <option value="Source">Pickup Thing (FORGOT NAME)</option>
+                <option value="Source">Source</option>
+                <option value="Both">Both</option>
+                <option value="None">Didn't Intake :(</option>
             </select>
         </div>
 
@@ -234,8 +245,26 @@
             <select name="trap" id="trap-select">
                 <option value="No">No trap attempt</option>
                 <option value="Failed" style="color:darkred;">Tried but failed</option>
-                <option value="Successful" style="color:forestgreen;">Trapped 1 successfully</option>
-                <option value="Multiple" style="color:forestgreen;">Trapped 2+ times</option>
+                <option value="Successful" style="color:forestgreen;">Trapped 1+ successfully</option>
+                <!--<option value="Multiple" style="color:forestgreen;">Trapped 2+ times</option>-->
+            </select>
+        </div>
+
+        <div class="container" style="margin-top: 5vw;">
+            <h2>Human Player Role</h2>
+            <select name="human-player" id="human-player-select">
+                <option value="Source">Source</option>
+                <option value="Amp" style="color:rgb(29, 111, 204);">Amplifier</option>
+                <!--<option value="Multiple" style="color:forestgreen;">Trapped 2+ times</option>-->
+            </select>
+            <select name="spotlight" id="spotlight-select" style="margin-top: 7.5vw; max-width: 90vw;">
+                <option value="3">MJ - Incredible, 3 spotlights!</option>
+                <option value="2">KD - Great, 2 spotlights!</option>
+                <option value="1">KD - Good, 1 spotlight.</option>
+                <option value="0" selected >Missed every toss :(</option>
+                <option value="-2">Wow, they have never tossed a note before, awful.</option>
+                <option value="-1">Didn't toss/ran out of time</option>
+                <!--<option value="Multiple" style="color:forestgreen;">Trapped 2+ times</option>-->
             </select>
         </div>
 

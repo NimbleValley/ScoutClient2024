@@ -157,7 +157,7 @@ var onSection = 0;
 
 // Switched section user is on from current to next
 async function switchSection(current, next) {
-
+    
     if (next == -1) {
         return;
     }
@@ -170,6 +170,10 @@ async function switchSection(current, next) {
         onSection++;
     } else {
         onSection--;
+    }
+
+    if(next == 0) {
+        update();
     }
 
     window.scroll({
@@ -186,9 +190,9 @@ async function switchSection(current, next) {
     sections[next].style.display = "flex";
 
     if (next > current) {
-        tl.fromTo(sections[next], { transform: "translate(60vw, 0vh) scale(0.45) rotate(7.5deg)", opacity: 0 }, { transform: "", opacity: 1, duration: 0.5, ease: "power2" }, "-=0.45");
+        tl.fromTo(sections[next], { transform: "translate(60vw, -25vh) scale(0.45) rotate(7.5deg)", opacity: 0 }, { transform: "", opacity: 1, duration: 0.5, ease: "power2" }, "-=0.45");
     } else {
-        tl.fromTo(sections[next], { transform: "translate(-60vw, 0vh) scale(0.45) rotate(-7.5deg)", opacity: 0 }, { transform: "", opacity: 1, duration: 0.5, ease: "power2" }, "-=0.45");
+        tl.fromTo(sections[next], { transform: "translate(-60vw, -25vh) scale(0.45) rotate(-7.5deg)", opacity: 0 }, { transform: "", opacity: 1, duration: 0.5, ease: "power2" }, "-=0.45");
     }
     await sleep(500);
     sections[current].style.display = "none";

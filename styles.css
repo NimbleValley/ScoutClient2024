@@ -86,7 +86,7 @@ html {
 h1 {
     font-size: 14vw;
     color: white;
-    margin-bottom: 7vh;
+    margin-bottom: 5vw;
     margin-top: 2vh;
     text-align: center;
 }
@@ -155,6 +155,14 @@ textarea {
     border-radius: 1vw;
     font-family: 'Poppins', sans-serif;
     max-width: 90vw;
+}
+
+#scoring-container {
+    width: 80vw;
+}
+
+#scoring-container div {
+    width: 100% !important;
 }
 
 #comments-area {
@@ -227,6 +235,38 @@ form {
     color: #C2BDB5;
     border-color: #C2BDB5;
     background-color: #5D5E5F;
+    position: relative;
+    z-index: 5;
+    transition: color 1s, border 1s, scale 0.5s;
+    scale: 1;
+}
+
+.plus-minus-button:active {
+    color: rgb(66, 66, 66);
+    border-color: rgb(90, 90, 90);
+    transition-duration: 0s;
+    scale: 0.75;
+}
+
+.plus-minus-button::after {
+    content: '';
+    background-color: rgb(245, 178, 78);
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    position: absolute;
+    z-index: -5;
+    opacity: 0;
+    scale: 2;
+    transition: opacity 0.75s, scale 0.75s;
+    border-radius: 1000000px;
+}
+
+.plus-minus-button:active::after {
+    scale: 0;
+    opacity: 1;
+    transition-duration: 0s;
 }
 
 .counter-icon {
