@@ -370,7 +370,7 @@ function autoMadeSpeakerUpdate(num) {
         return;
     }
     autoMadeSpeaker += num;
-    autoMadeSpeakerText.innerText = `Mase Speaker: ${autoMadeSpeaker}`;
+    autoMadeSpeakerText.innerText = `Made Speaker: ${autoMadeSpeaker}`;
 }
 
 function autoMissedAmpUpdate(num) {

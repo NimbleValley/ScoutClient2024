@@ -92,7 +92,7 @@ h1 {
 }
 
 h2 {
-    font-size: 8vw;
+    font-size: 7vw;
     color: rgb(224, 221, 215);
     margin: 2vw;
 }
@@ -147,6 +147,18 @@ input {
     border-radius: 1vw;
 }
 
+input:active {
+    background-color: #5D5E5F;
+    border: solid 1vw rgb(245, 178, 78);
+    color: white;
+}
+
+input:hover {
+    background-color: #161616;
+    border: solid 1vw rgb(245, 178, 78);
+    color: white;
+}
+
 textarea {
     background-color: rgb(184, 178, 178);
     font-size: 4vw;
@@ -192,6 +204,16 @@ textarea {
     margin-bottom: 12vh;
     font-family: BDNippori;
     color: rgb(255, 255, 255);
+}
+
+.section-button:active {
+    background-color: #161616 !important;
+    color: rgb(245, 178, 78);
+}
+
+.section-button:hover {
+    background-color: #161616 !important;
+    color: rgb(245, 178, 78);
 }
 
 button {
