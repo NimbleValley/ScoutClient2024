@@ -99,7 +99,12 @@ scoutForm.addEventListener('submit', e => {
         teleClimbSpeedOutput = "N/A";
     }
 
+    let humanPlayerRole = humanPlayerSelect.value;
+
     let spotlightOutput = spotlightSelect.value;
+    if(humanPlayerRole != "Amp") {
+        spotlightOutput = "N/A";
+    }
 
     let teleTrapOutcome = trapSelect.value;
 
@@ -209,6 +214,7 @@ function resetForm() {
 
     autoPieceSelection = [];
     for (let i = 0; i < autoNoteButtons.length; i++) {
+        autoNoteStatus[i] = 0;
         autoNoteButtons[i].style.backgroundColor = "transparent";
     }
 
