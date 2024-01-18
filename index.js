@@ -11,6 +11,10 @@ function enterFullScreen(element) {
     }
 };
 
+document.body.addEventListener('touchmove',function(e){
+    e.preventDefault();
+});
+
 // Sections array, each tab
 var sections = document.getElementsByClassName("section");
 

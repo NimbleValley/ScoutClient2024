@@ -6,8 +6,9 @@
 body,
 html {
     overscroll-behavior-x: none;
-    background-color: rgb(47, 47, 61);
+    background-color: rgb(41, 36, 31);
     font-family: 'Poppins', sans-serif;
+    font-family: 'Slabo 27px', serif;
     user-select: none;
     margin: 0;
     -webkit-user-select: none;
@@ -22,13 +23,14 @@ html {
 #main-title {
     width: 85vw;
     position: relative;
+    font-size: 15vw;
 }
 
 #main-title::after {
     content: "";
     position: absolute;
     width: 100%;
-    height: 2.5vw;
+    height: 1vw;
     left: 0;
     bottom: 0;
     background-color: #00D586;
@@ -109,6 +111,7 @@ h4 {
     color: rgb(224, 221, 215);
     margin: 1vw;
     text-align: center;
+    font-family: 'Roboto Condensed', sans-serif;
 }
 
 h5 {
@@ -116,6 +119,7 @@ h5 {
     color: rgb(224, 221, 215);
     margin: 1vw;
     text-align: center;
+    font-family: 'Roboto Condensed', sans-serif;
 }
 
 p {
@@ -166,11 +170,12 @@ textarea {
     border: 1vw solid rgb(235, 229, 229);
     border-radius: 1vw;
     font-family: 'Poppins', sans-serif;
+    font-family: 'Slabo 27px', serif;
     max-width: 90vw;
 }
 
 #scoring-container {
-    width: 80vw;
+    width: 70vw;
 }
 
 #scoring-container div {
@@ -183,7 +188,7 @@ textarea {
 }
 
 #start-button {
-    background-color: rgb(207, 200, 190);
+    background-color: rgb(82, 78, 74);
     font-size: 10vw;
     padding: 2.5vw 7vw 2.5vw 7vw;
     border-radius: 1vw;
@@ -226,6 +231,7 @@ button {
     margin-top: 10vh;
     margin-bottom: 5vh;
     font-family: 'Poppins', sans-serif;
+    font-family: 'Slabo 27px', serif;
 }
 
 form {
@@ -249,11 +255,11 @@ form {
 
 .plus-minus-button {
     margin: 0;
-    font-size: 12vw;
+    font-size: 15vw;
     padding: 0;
     width: 16vw;
     height: 16vw;
-    line-height: 15vw;
+    line-height: 0vw;
     color: #C2BDB5;
     border-color: #C2BDB5;
     background-color: #5D5E5F;
