@@ -7,7 +7,7 @@ var rings = [];
 
 class Ring {
     x = 0.5 * window.innerWidth;
-    y = document.getElementById("start-button").getBoundingClientRect().top;
+    y = document.getElementById("start-button").getBoundingClientRect().top + window.scrollY;
     xVel = 0;
     yVel = (Math.random()+1) * -3;
     scale = Math.random() / 3 + 0.63;

@@ -43,21 +43,17 @@ scoutForm.addEventListener('submit', e => {
         teleDisabledOutput = "Yes";
     }
 
-    // AUTO IS UNSUCCESSFUL IF THEY RECIEVED TECH, MISSED PIECE, OR TRIED BUT FAILED TO ENGAGE
 
     let autoPoints = 0;
     if (autoMobility) {
-        autoPoints += 3;
+        autoPoints += 2;
     }
     if (autoTech) {
-        autoPoints -= 10;
         autoSuccess = false;
     }
+    autoPoints += autoMadeSpeaker * 5;
+    autoPoints += autoMadeAmp * 2;
     console.log(autoPoints);
-
-    if (autoDroppedPieced > 0) {
-        autoSuccess = false;
-    }
 
     // TELE VALUES
 
@@ -81,47 +77,60 @@ scoutForm.addEventListener('submit', e => {
         recklessOutput = "Yes";
     }
 
+    let telePoints = 0;
+    telePoints += teleMadeAmp;
+    telePoints += teleMadeSpeaker * 2;
+
+
+    // ENDGAME
     let teleParkOutput = "No";
-    if(telePark) {
+    if (telePark) {
         teleParkOutput = "Yes";
     }
 
+    let teleClimbSpeedOutput = climbSpeedSelect.value;
 
+    let teleClimbOutput = climbSelect.value;
+    if (teleClimbOutput == "Successful") {
+        telePark = false;
+        teleParkOutput = "No";
+    } else {
+        // Special case, they didn't climb, don't report data
+        teleClimbSpeedOutput = "N/A";
+    }
 
-    let telePoints = 0;
-    // FIXME fix this
-    telePoints = 15;
-    
+    let spotlightOutput = spotlightSelect.value;
+
+    let teleTrapOutcome = trapSelect.value;
+
+    let endgamePoints = 0;
     if (telePark) {
-        telePoints += 2;
+        endgamePoints += 1;
     }
-    if (teleTech) {
-        telePoints -= 10;
+
+    if (teleClimbOutput == "Successful") {
+        endgamePoints += 3;
     }
-    console.log(telePoints);
+
+    if (teleTrapOutcome == "Successful") {
+        endgamePoints += 5;
+    }
+
+    console.log(endgamePoints);
 
     let commentsOutput = document.getElementById("comments-area").value;
-    if(commentsOutput == "" || commentsOutput == " " || commentsOutput == null) {
+    if (commentsOutput == "" || commentsOutput == " " || commentsOutput == null) {
         commentsOutput = nameInput.value + " didn't write a comment :(";
     }
 
     let matchNumberOutput = matchInput.value;
-    if(matchNumberOutput == null || matchNumberOutput == "" || matchNumberOutput == " ") {
+    if (matchNumberOutput == null || matchNumberOutput == "" || matchNumberOutput == " ") {
         matchNumberOutput = -1;
     }
 
-    if(teleDroppedPieced == null) {
-        teleDroppedPieced = 0;
-    }
+    let totalPoints = autoPoints + telePoints + endgamePoints;
 
-    if(autoDroppedPieced == null) {
-        autoDroppedPieced = 0;
-    }
-
-    let totalPoints = autoPoints + telePoints;
-
-    // TODO add auto missed shots
-    let autoMissedShots = 0;
+    let intakeOutput = pickupMethodSelect.value;
 
     data = {
         "Name": nameInput.value,
@@ -135,17 +144,28 @@ scoutForm.addEventListener('submit', e => {
         "Reckless": recklessOutput,
         "Total Points": totalPoints,
         "Comments": commentsOutput,
+        "Auto Points": autoPoints,
         "Auto Tech": autoTechOutput,
         "Auto Mobility": autoMobilityOutput,
-        "Auto Missed Intake": autoDroppedPieced,
-        "Auto Missed Shots": autoMissedShots,
+        "Auto Piece Selection": autoPieceSelection,
+        "Auto Made Amp": autoMadeAmp,
+        "Auto Missed Amp": autoMissedAmp,
+        "Auto Made Speaker": autoMadeSpeaker,
+        "Auto Missed Speaker": autoMissedSpeaker,
         "Auto Successful": autoSuccessOutput,
-        "Auto Points": autoPoints,
-        "Tele Tech": teleTechOutput,
-        "Tele Missed Shots": teleDroppedPieced,
         "Tele Points": telePoints,
+        "Tele Tech": teleTechOutput,
+        "Tele Made Amp": teleMadeAmp,
+        "Tele Missed Amp": teleMissedAmp,
+        "Tele Made Speaker": teleMadeSpeaker,
+        "Tele Missed Speaker": teleMissedSpeaker,
+        "Endgame Points": endgamePoints,
         "Endgame Park": teleParkOutput,
-        "Intook From": pickupMethodSelect.value,
+        "Endgame Climb": teleClimbOutput,
+        "Climb Speed": teleClimbSpeedOutput,
+        "Trap": teleTrapOutcome,
+        "Spotlight": spotlightOutput,
+        "Intook From": intakeOutput,
     };
 
     console.log(data);
@@ -173,6 +193,7 @@ scoutForm.addEventListener('submit', e => {
 function resetForm() {
     teamInput.value = "";
     matchInput.value = "";
+    document.getElementById("comments-area").value = "";
     teleCharge = false;
     teleFlip = false;
     dumb = false;
@@ -186,11 +207,32 @@ function resetForm() {
     autoMobility = false;
     autoSuccess = false;
 
-    autoDroppedPieced = 0;
-    teleDroppedPieced = 0;
+    autoPieceSelection = [];
+    for (let i = 0; i < autoNoteButtons.length; i++) {
+        autoNoteButtons[i].style.backgroundColor = "transparent";
+    }
 
-    teleDroppedPiecesText.innerText = "Missed Pieces: 0";
-    autoDroppedPiecesText.innerText = "Missed Pieces: 0";
+    autoMadeAmp = 0;
+    autoMadeAmpText.innerText = "Made Amp: 0";
+    autoMissedAmp = 0;
+    autoMissedAmpText.innerText = "Missed Amp: 0";
+    autoMadeSpeaker = 0;
+
+    autoMadeSpeaker = 0;
+    autoMadeSpeakerText.innerText = "Made Speaker: 0";
+    autoMissedSpeaker = 0;
+    autoMissedSpeakerText.innerText = "Missed Speaker: 0";
+
+    teleMadeAmp = 0;
+    teleMadeAmpText.innerText = "Made Amp: 0";
+    teleMissedAmp = 0;
+    teleMissedAmpText.innerText = "Missed Amp: 0";
+    teleMadeSpeaker = 0;
+
+    teleMadeSpeaker = 0;
+    teleMadeSpeakerText.innerText = "Made Speaker: 0";
+    teleMissedSpeaker = 0;
+    teleMissedSpeakerText.innerText = "Missed Speaker: 0";
 
     let checks = document.getElementsByClassName("check");
     for (let i = 0; i < checks.length; i++) {
@@ -201,6 +243,14 @@ function resetForm() {
     teleParkCheck.style.transform = "";
     teleParkCheck.style.opacity = 1;
     document.getElementById("comments-area").value = "";
+
+    climbSelect.value = "No";
+    trapSelect.value = "No";
+    humanPlayerSelect.value = "Source";
+    spotlightSelect.value = "0";
+
+    spotlightSelect.style.display = "none";
+    climbSpeedSelect.style.display = "none";
 
     onSection = 0;
     update();

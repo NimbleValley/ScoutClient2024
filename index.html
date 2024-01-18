@@ -11,7 +11,9 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.3/gsap.min.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400&family=Roboto+Condensed&family=Slabo+27px&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400&family=Roboto&family=Roboto+Condensed&family=Slabo+27px&display=swap"
+        rel="stylesheet">
     <link rel="icon" type="image/png" href="img/bowtie.png" />
 
     <meta name="viewport"
@@ -19,7 +21,7 @@
 </head>
 
 <body>
-    <div id="welcome-section" class="section">
+    <div id="welcome-section" class="section" style="overflow: hidden;">
         <canvas id="welcome-canvas"></canvas>
         <h1 id="main-title">Crescendo Scout Form</h1>
         <div id="start-button" class="section-button" onclick="switchSection(0, 1);">Start</div>
@@ -89,41 +91,46 @@
         </div>
         <h5>(Click notes to toggle, green indicates successful intake, red indicates missed intake)</h5>
 
-        <div class="checkbox-label counter-container">
-            <h2 id="auto-made-speaker-text">Made Speaker: 0</h2>
-            <div class="horizontal-container">
-                <button class="plus-minus-button" onclick="autoMadeSpeakerUpdate(1)">+</button>
-                <img src="svg/speaker.svg" alt="" class="counter-icon"
-                    style="filter: hue-rotate(85deg) brightness(1.5);">
-                <button class="plus-minus-button" onclick="autoMadeSpeakerUpdate(-1)">-</button>
-            </div>
-        </div>
+        <div id="scoring-container">
 
-        <div class="checkbox-label counter-container">
-            <h2 id="auto-missed-speaker-text">Missed Speaker: 0</h2>
-            <div class="horizontal-container">
-                <button class="plus-minus-button" onclick="autoMissedSpeakerUpdate(1)">+</button>
-                <img src="svg/speaker.svg" alt="" class="counter-icon">
-                <button class="plus-minus-button" onclick="autoMissedSpeakerUpdate(-1)">-</button>
+            <div class="checkbox-label counter-container">
+                <h2 id="auto-made-speaker-text">Made Speaker: 0</h2>
+                <div class="horizontal-container">
+                    <button class="plus-minus-button" onclick="autoMadeSpeakerUpdate(1)">+</button>
+                    <img src="svg/speaker.svg" alt="" class="counter-icon"
+                        style="filter: hue-rotate(85deg) brightness(1.5);">
+                    <button class="plus-minus-button" onclick="autoMadeSpeakerUpdate(-1)">-</button>
+                </div>
             </div>
-        </div>
 
-        <div class="checkbox-label counter-container">
-            <h2 id="auto-made-amp-text">Made Amplifier: 0</h2>
-            <div class="horizontal-container">
-                <button class="plus-minus-button" onclick="autoMadeAmpUpdate(1)">+</button>
-                <img src="svg/amp.svg" alt="" class="counter-icon" style="filter: hue-rotate(85deg) brightness(1.5);">
-                <button class="plus-minus-button" onclick="autoMadeAmpUpdate(-1)">-</button>
+            <div class="checkbox-label counter-container">
+                <h2 id="auto-missed-speaker-text">Missed Speaker: 0</h2>
+                <div class="horizontal-container">
+                    <button class="plus-minus-button" onclick="autoMissedSpeakerUpdate(1)">+</button>
+                    <img src="svg/speaker.svg" alt="" class="counter-icon">
+                    <button class="plus-minus-button" onclick="autoMissedSpeakerUpdate(-1)">-</button>
+                </div>
             </div>
-        </div>
 
-        <div class="checkbox-label counter-container">
-            <h2 id="auto-missed-amp-text">Missed Amplifier: 0</h2>
-            <div class="horizontal-container">
-                <button class="plus-minus-button" onclick="autoMissedAmpUpdate(1)">+</button>
-                <img src="svg/amp.svg" alt="" class="counter-icon">
-                <button class="plus-minus-button" onclick="autoMissedAmpUpdate(-1)">-</button>
+            <div class="checkbox-label counter-container">
+                <h2 id="auto-made-amp-text">Made Amplifier: 0</h2>
+                <div class="horizontal-container">
+                    <button class="plus-minus-button" onclick="autoMadeAmpUpdate(1)">+</button>
+                    <img src="svg/amp.svg" alt="" class="counter-icon"
+                        style="filter: hue-rotate(85deg) brightness(1.5);">
+                    <button class="plus-minus-button" onclick="autoMadeAmpUpdate(-1)">-</button>
+                </div>
             </div>
+
+            <div class="checkbox-label counter-container">
+                <h2 id="auto-missed-amp-text">Missed Amplifier: 0</h2>
+                <div class="horizontal-container">
+                    <button class="plus-minus-button" onclick="autoMissedAmpUpdate(1)">+</button>
+                    <img src="svg/amp.svg" alt="" class="counter-icon">
+                    <button class="plus-minus-button" onclick="autoMissedAmpUpdate(-1)">-</button>
+                </div>
+            </div>
+
         </div>
 
         <div class="checkbox-label" id="auto-tech-check">
@@ -144,7 +151,7 @@
     <div id="tele-section" class="section">
         <h1>Teleop</h1>
 
-        <div id="scoring-container">
+        <div class="scoring-container">
 
             <div class="checkbox-label counter-container">
                 <h2 id="tele-made-speaker-text">Made Speaker: 0</h2>
@@ -229,14 +236,24 @@
             <div id="tele-disabled-checkbox" class="check"></div>
         </div>
 
-        <h1 style="margin-bottom: 0vh;">Endgame</h1>
+        <h1 style="margin-top: 10vh;">Endgame</h1>
 
         <div class="container">
             <h2>Climb:</h2>
             <select name="climb" id="climb-select">
-                <option value="No">No climb attempt</option>
+                <option value="No" selected>No climb attempt</option>
                 <option value="Failed" style="color:darkred;">Tried but failed</option>
                 <option value="Successful" style="color:forestgreen;">Climbed successfully</option>
+            </select>
+        </div>
+
+        <div class="container" id="climb-speed-container" style="margin-top: 4vh;" style="margin-bottom: 4vh;">
+            <h2>Guess climb speed:</h2>
+            <select name="climb-speed" id="climb-speed-select">
+                <option value="Fast">
+                    <4 seconds</option>
+                <option value="Medium" selected>4-10 seconds</option>
+                <option value="Slow">>10 seconds seconds</option>
             </select>
         </div>
 
@@ -245,7 +262,7 @@
             <div id="tele-park-checkbox" class="check"></div>
         </div>
 
-        <div class="container" style="margin-top: 5vw;">
+        <div class="container" style="margin-top: 6vh; margin-bottom: 6vh;">
             <h2>Trap:</h2>
             <select name="trap" id="trap-select">
                 <option value="No">No trap attempt</option>
@@ -267,8 +284,8 @@
                 <option value="2">Giannis - Great, 2 spotlights!</option>
                 <option value="1">Kentavious Caldwell-Pope - Good, 1 spotlight.</option>
                 <option value="0" selected>Missed every toss :(</option>
-                <option value="-2">Jordan Poole - Wow, they have never tossed a note before, awful.</option>
-                <option value="-1">Didn't toss/ran out of time</option>
+                <option value="-1">Jordan Poole - Wow, they have never tossed a note before, awful.</option>
+                <option value="N/A">Didn't toss/ran out of time</option>
                 <!--<option value="Multiple" style="color:forestgreen;">Trapped 2+ times</option>-->
             </select>
         </div>

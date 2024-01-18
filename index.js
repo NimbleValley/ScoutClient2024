@@ -11,8 +11,8 @@ function enterFullScreen(element) {
     }
 };
 
-document.body.addEventListener('touchmove',function(e){
-    e.preventDefault();
+document.body.addEventListener('touchmove', function (e) {
+    //e.preventDefault();
 });
 
 // Sections array, each tab
@@ -100,6 +100,9 @@ var teleMissedAmp = 0;
 const teleMissedAmpText = document.getElementById("tele-missed-amp-text");
 
 
+// PIECE SELECTION
+var autoPieceSelection = [];
+
 // Auto mobility
 var autoMobility = false;
 const autoMobilityCheck = document.getElementById("auto-mobility-check");
@@ -136,11 +139,20 @@ const teleDisabledCheck = document.getElementById("tele-disabled-check");
 
 
 // Tele parked
-// TODO might need to removed in 2024
 var telePark = false;
 const teleParkCheck = document.getElementById("tele-park-check");
 
 const climbSelect = document.getElementById("climb-select");
+const climbSpeedSelect = document.getElementById("climb-speed-select");
+
+const humanPlayerSelect = document.getElementById("human-player-select");
+const spotlightSelect = document.getElementById("spotlight-select");
+spotlightSelect.style.display = "none";
+
+const trapSelect = document.getElementById("trap-select");
+
+const climbSpeedContainer = document.getElementById("climb-speed-container");
+climbSpeedContainer.style.display = "none";
 
 // Were they dumb
 var dumb = false;
@@ -161,7 +173,7 @@ var onSection = 0;
 
 // Switched section user is on from current to next
 async function switchSection(current, next) {
-    
+
     if (next == -1) {
         return;
     }
@@ -176,7 +188,7 @@ async function switchSection(current, next) {
         onSection--;
     }
 
-    if(next == 0) {
+    if (next == 0) {
         update();
     }
 
@@ -215,9 +227,6 @@ allianceSelect.addEventListener("change", function () {
 });
 
 autoMobilityCheck.addEventListener("click", function () {
-    if(autoNoteStatus.includes(1) || autoNoteStatus.includes(2)) {
-        return;
-    }
 
     autoMobility = !autoMobility;
     let checkbox = document.getElementById("auto-mobility-checkbox");
@@ -353,6 +362,26 @@ recklessCheck.addEventListener("click", function () {
     }
 });
 
+climbSelect.addEventListener("change", function () {
+    climbSpeedContainer.style.display = "none";
+    if (climbSelect.value != "Successful") {
+        teleParkCheck.style.display = "flex";
+    } else {
+        teleParkCheck.style.display = "none";
+    }
+    if(climbSelect.value == "Successful") {
+        climbSpeedContainer.style.display = "flex";
+    }
+});
+
+humanPlayerSelect.addEventListener("change", function () {
+    if (humanPlayerSelect.value != "Source") {
+        spotlightSelect.style.display = "flex";
+    } else {
+        spotlightSelect.style.display = "none";
+    }
+});
+
 
 // AUTO AMP & SPEAKER SHOT CALLBACK
 function autoMissedSpeakerUpdate(num) {
@@ -463,14 +492,6 @@ function teleMissedShotUpdate(num) {
     teleMissedShots += num;
     teleMissedShotsText.innerText = `Missed Shots: ${teleMissedShots}`
 }
-
-climbSelect.addEventListener("change", function() {
-    if(climbSelect.value != "Successful") {
-        teleParkCheck.style.display = "flex";
-    } else {
-        teleParkCheck.style.display = "none";
-    }
-});
 
 // Sleep function, pause/delay
 const sleep = (milliseconds) => {
