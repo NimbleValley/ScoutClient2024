@@ -41,6 +41,10 @@ const autoNoteImage = document.getElementById("auto-note-image");
 const autoNoteContainer = document.getElementById("note-auto-button-container");
 const autoNoteButtons = document.getElementsByClassName("note-auto-button");
 let autoNoteStatus = [];
+
+// PIECE SELECTION
+var autoPieceSelection = [];
+
 for (let i = 0; i < autoNoteButtons.length; i++) {
     autoNoteStatus.push(0);
     autoNoteButtons[i].addEventListener("click", function (e) {
@@ -65,7 +69,18 @@ for (let i = 0; i < autoNoteButtons.length; i++) {
                 console.log("Invalid auto note status :(");
                 break;
         }
+        updateAutoPieceSelection();
     });
+}
+
+function updateAutoPieceSelection() {
+    autoPieceSelection = [];
+    for(let i = 0; i < autoNoteStatus.length; i ++) {
+        if(parseInt(autoNoteStatus[i]) != 0) {
+            autoPieceSelection.push(parseInt(autoNoteStatus[i]) == 1 ? i : i+8);
+        }
+    }
+    console.log(autoPieceSelection);
 }
 
 
@@ -100,9 +115,6 @@ var teleMissedAmp = 0;
 const teleMissedAmpText = document.getElementById("tele-missed-amp-text");
 
 
-// PIECE SELECTION
-var autoPieceSelection = [];
-
 // Auto mobility
 var autoMobility = false;
 const autoMobilityCheck = document.getElementById("auto-mobility-check");
@@ -114,8 +126,11 @@ const autoTechCheck = document.getElementById("auto-tech-check");
 
 
 // Pickup method
-// TODO might need to removed in 2024
 const pickupMethodSelect = document.getElementById("pickup-method");
+
+
+// Speaker shot range
+const speakerShotRange = document.getElementById("shot-range");
 
 
 // Tele tech

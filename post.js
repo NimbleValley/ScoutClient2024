@@ -137,9 +137,14 @@ scoutForm.addEventListener('submit', e => {
 
     let intakeOutput = pickupMethodSelect.value;
 
+    let teamOutput = teamInput.value;
+    if(teamOutput == "" || teamOutput == " ") {
+        teamOutput = -1;
+    }
+
     data = {
         "Name": nameInput.value,
-        "Team Number": teamInput.value,
+        "Team Number": teamOutput,
         "Alliance": allianceSelect.value,
         "Match Number": matchNumberOutput,
         "Flip": teleFlipOutput,
@@ -152,7 +157,7 @@ scoutForm.addEventListener('submit', e => {
         "Auto Points": autoPoints,
         "Auto Tech": autoTechOutput,
         "Auto Mobility": autoMobilityOutput,
-        "Auto Piece Selection": autoPieceSelection,
+        "Auto Piece Selection": autoPieceSelection.join(",").toString() != null ? autoPieceSelection.join(",").toString() : "",
         "Auto Made Amp": autoMadeAmp,
         "Auto Missed Amp": autoMissedAmp,
         "Auto Made Speaker": autoMadeSpeaker,
@@ -171,6 +176,7 @@ scoutForm.addEventListener('submit', e => {
         "Trap": teleTrapOutcome,
         "Spotlight": spotlightOutput,
         "Intook From": intakeOutput,
+        "Speaker Range": speakerShotRange.value
     };
 
     console.log(data);
@@ -257,6 +263,8 @@ function resetForm() {
 
     spotlightSelect.style.display = "none";
     climbSpeedSelect.style.display = "none";
+
+    speakerShotRange.value = "Medium";
 
     onSection = 0;
     update();

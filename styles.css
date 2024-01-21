@@ -144,6 +144,18 @@ select {
     border-radius: 1vw;
 }
 
+select:active {
+    background-color: #161616 !important;
+    color: white;
+    border-color: rgb(245, 178, 78);
+}
+
+select:hover {
+    background-color: #161616 !important;
+    color: white;
+    border-color: rgb(245, 178, 78);
+}
+
 input {
     background-color: rgb(184, 178, 178);
     font-size: 6vw;
@@ -211,6 +223,7 @@ textarea {
     margin-bottom: 12vh;
     font-family: BDNippori;
     color: rgb(255, 255, 255);
+    height: 9vw;
 }
 
 .section-button:active {
@@ -267,9 +280,16 @@ form {
     background-color: #5D5E5F;
     position: relative;
     z-index: 5;
-    transition: color 1s, border 1s, scale 0.5s;
+    transition: scale 0.5s;
     scale: 1;
 }
+
+.plus-minus-button:active {
+    background-color: #161616 !important;
+    color: rgb(245, 178, 78);
+    border-color: rgb(245, 178, 78);
+}
+
 /*
 .plus-minus-button:active {
     color: rgb(66, 66, 66);
