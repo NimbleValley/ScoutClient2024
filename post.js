@@ -176,7 +176,9 @@ scoutForm.addEventListener('submit', e => {
         "Trap": teleTrapOutcome,
         "Spotlight": spotlightOutput,
         "Intook From": intakeOutput,
-        "Speaker Range": speakerShotRange.value
+        "Speaker Range": speakerShotRange.value,
+        "Auto Speaker %": Math.round(autoMadeSpeaker / (autoMadeSpeaker + autoMissedSpeaker) * 100),
+        "Tele Speaker %": Math.round(teleMadeSpeaker / (teleMadeSpeaker + teleMissedSpeaker) * 100)
     };
 
     console.log(data);
@@ -225,9 +227,9 @@ function resetForm() {
     }
 
     autoMadeAmp = 0;
-    autoMadeAmpText.innerText = "Made Amp: 0";
+    autoMadeAmpText.innerText = "Made Amplifier: 0";
     autoMissedAmp = 0;
-    autoMissedAmpText.innerText = "Missed Amp: 0";
+    autoMissedAmpText.innerText = "Missed Amplifier: 0";
     autoMadeSpeaker = 0;
 
     autoMadeSpeaker = 0;
@@ -236,9 +238,9 @@ function resetForm() {
     autoMissedSpeakerText.innerText = "Missed Speaker: 0";
 
     teleMadeAmp = 0;
-    teleMadeAmpText.innerText = "Made Amp: 0";
+    teleMadeAmpText.innerText = "Made Amplifier: 0";
     teleMissedAmp = 0;
-    teleMissedAmpText.innerText = "Missed Amp: 0";
+    teleMissedAmpText.innerText = "Missed Amplifier: 0";
     teleMadeSpeaker = 0;
 
     teleMadeSpeaker = 0;

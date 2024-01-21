@@ -201,6 +201,10 @@ textarea {
     padding: 0;
 }
 
+#submit-button {
+    height: fit-content;
+}
+
 #start-button {
     background-color: rgb(82, 78, 74);
     font-size: 10vw;
@@ -210,6 +214,7 @@ textarea {
     font-weight: 400;
     margin-top: 10vh;
     margin-bottom: 5vh;
+    height: fit-content;
 }
 
 .section-button {
