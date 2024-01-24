@@ -130,7 +130,7 @@ scoutForm.addEventListener('submit', e => {
 
     let matchNumberOutput = matchInput.value;
     if (matchNumberOutput == null || matchNumberOutput == "" || matchNumberOutput == " ") {
-        matchNumberOutput = -1;
+        matchNumberOutput = 0;
     }
 
     let totalPoints = autoPoints + telePoints + endgamePoints;
@@ -139,7 +139,7 @@ scoutForm.addEventListener('submit', e => {
 
     let teamOutput = teamInput.value;
     if(teamOutput == "" || teamOutput == " ") {
-        teamOutput = -1;
+        teamOutput = 0;
     }
 
     data = {
