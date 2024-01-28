@@ -5,6 +5,8 @@ const matchInput = document.getElementById("match-input");
 const submitButton = document.getElementById("submit-button");
 const scoutForm = document.getElementById("scout-form");
 
+const downloadButton = document.getElementById("download-button");
+
 const autoChargeOutput = document.getElementById("auto-charge");
 
 const scriptURL = "https://script.google.com/macros/s/AKfycbx_KXhLkJ02ADQLSjYrhh3qRcPjA5Dg15CQQQdMBWPEIdZS8XMCryygI_CT70E8r7GJNQ/exec";
@@ -15,7 +17,13 @@ document.addEventListener("keypress", function () {
     //document.getElementById("respect-your-elders-image").src = respectInducingImages[Math.round(Math.random() * (respectInducingImages.length-1))];
 });
 
+var data;
+var matchNumberOutput;
+var teamOutput;
+
 scoutForm.addEventListener('submit', e => {
+    switchSection(4, 5);
+
     document.getElementById("respect-your-elders-image").src = respectInducingImages[Math.round(Math.random() * (respectInducingImages.length - 1))];
 
     let autoMobilityOutput = "No";
@@ -128,7 +136,7 @@ scoutForm.addEventListener('submit', e => {
         commentsOutput = nameInput.value + " didn't write a comment :(";
     }
 
-    let matchNumberOutput = matchInput.value;
+    matchNumberOutput = matchInput.value;
     if (matchNumberOutput == null || matchNumberOutput == "" || matchNumberOutput == " ") {
         matchNumberOutput = 0;
     }
@@ -137,7 +145,7 @@ scoutForm.addEventListener('submit', e => {
 
     let intakeOutput = pickupMethodSelect.value;
 
-    let teamOutput = teamInput.value;
+    teamOutput = teamInput.value;
     if(teamOutput == "" || teamOutput == " ") {
         teamOutput = 0;
     }
@@ -196,10 +204,10 @@ scoutForm.addEventListener('submit', e => {
             switchSection(5, 0);
             resetForm();
         })
-        .catch(error => {
-            alert('Terrible Error :(.', error.message);
-            switchSection(5, 0);
-            resetForm();
+        .catch(async error => {
+            //alert('Terrible Error :(.', error.message);
+            await sleep(500);
+            switchSection(5, 6);
         });
 });
 
@@ -268,6 +276,24 @@ function resetForm() {
 
     speakerShotRange.value = "Medium";
 
-    onSection = 0;
+    //onSection = 0;
     update();
 }
+
+downloadButton.addEventListener('click', function() {
+    const text = JSON.stringify(data);
+    const type = "plain/text";
+
+    // create courseData
+    const a = document.createElement("a");
+    const file = new Blob([text], { type: type });
+    a.href = URL.createObjectURL(file);
+    a.download = `Match ${matchNumberOutput} - ${teamOutput}.txt`;
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+
+    switchSection(6, 0);
+    switchSection(5, 0);
+    resetForm();
+});

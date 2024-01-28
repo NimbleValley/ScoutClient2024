@@ -323,8 +323,7 @@
         <div class="button-container">
             <div class="section-button" onclick="switchSection(4, 3)">Back</div>
             <form id="scout-form">
-                <button class="section-button" id="submit-button" type="submit"
-                    onclick="switchSection(4, 5)">Submit</button>
+                <button class="section-button" id="submit-button" type="submit">Submit</button>
             </form>
         </div>
     </div>
@@ -332,6 +331,11 @@
         <h1 style="text-align: center;">Submitting Response...</h1>
         <h3>While you wait, enjoy this image.</h3>
         <img id="respect-your-elders-image" src="img/sherril5.jpg" alt="Won't load :(">
+    </div>
+    <div id="error-section" class="section">
+        <h1 style="text-align: center;">There was an issue submitting response :(</h1>
+        <h2>Please download the form data text file to submit later (send to me I'll add it manually)</h2>
+        <button class="section-button" id="download-button" onclick="switchSection(4, 5)">Download</button>
     </div>
 </body>
 <script src="index.js"></script>

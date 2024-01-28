@@ -205,6 +205,10 @@ textarea {
     height: fit-content;
 }
 
+#download-button {
+    height: fit-content;
+}
+
 #start-button {
     background-color: rgb(82, 78, 74);
     font-size: 10vw;

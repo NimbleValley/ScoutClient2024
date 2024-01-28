@@ -193,7 +193,7 @@ async function switchSection(current, next) {
         return;
     }
 
-    if (next > 5) {
+    if (next > 6) {
         return;
     }
 
