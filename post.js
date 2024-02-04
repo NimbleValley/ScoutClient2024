@@ -150,6 +150,9 @@ scoutForm.addEventListener('submit', e => {
         teamOutput = 0;
     }
 
+    let autoSpeakerPercent = Math.round(autoMadeSpeaker / (autoMadeSpeaker + autoMissedSpeaker) * 100);
+    let teleSpeakerPercent = Math.round(teleMadeSpeaker / (teleMadeSpeaker + teleMissedSpeaker) * 100);
+
     data = {
         "Name": nameInput.value,
         "Team Number": teamOutput,
@@ -185,8 +188,8 @@ scoutForm.addEventListener('submit', e => {
         "Spotlight": spotlightOutput,
         "Intook From": intakeOutput,
         "Speaker Range": speakerShotRange.value,
-        "Auto Speaker %": Math.round(autoMadeSpeaker / (autoMadeSpeaker + autoMissedSpeaker) * 100),
-        "Tele Speaker %": Math.round(teleMadeSpeaker / (teleMadeSpeaker + teleMissedSpeaker) * 100)
+        "Auto Speaker %": isNaN(autoSpeakerPercent) ? "N/A" : autoSpeakerPercent,
+        "Tele Speaker %": isNaN(teleSpeakerPercent) ? "N/A" : teleSpeakerPercent
     };
 
     console.log(data);
