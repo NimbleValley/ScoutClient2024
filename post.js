@@ -277,7 +277,7 @@ function resetForm() {
     spotlightSelect.style.display = "none";
     climbSpeedSelect.style.display = "none";
 
-    speakerShotRange.value = "Medium";
+    speakerShotRange.value = "Subwoofer";
 
     //onSection = 0;
     update();
