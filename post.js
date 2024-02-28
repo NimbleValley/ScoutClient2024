@@ -189,7 +189,9 @@ scoutForm.addEventListener('submit', e => {
         "Intook From": intakeOutput,
         "Speaker Range": speakerShotRange.value,
         "Auto Speaker %": isNaN(autoSpeakerPercent) ? "N/A" : autoSpeakerPercent,
-        "Tele Speaker %": isNaN(teleSpeakerPercent) ? "N/A" : teleSpeakerPercent
+        "Tele Speaker %": isNaN(teleSpeakerPercent) ? "N/A" : teleSpeakerPercent,
+        "Auto Start": document.getElementByID("auto-start").value,
+        "Gamepieces": teleMadeSpeaker + teleMadeAmp
     };
 
     console.log(data);
