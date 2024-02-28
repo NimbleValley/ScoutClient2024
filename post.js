@@ -153,6 +153,7 @@ scoutForm.addEventListener('submit', e => {
     let autoSpeakerPercent = Math.round(autoMadeSpeaker / (autoMadeSpeaker + autoMissedSpeaker) * 100);
     let teleSpeakerPercent = Math.round(teleMadeSpeaker / (teleMadeSpeaker + teleMissedSpeaker) * 100);
 
+    alert("New code");
     let autoStart = document.getElementByID("auto-start").value;
     alert(autoStart)
 
