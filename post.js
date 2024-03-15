@@ -7,6 +7,8 @@ const scoutForm = document.getElementById("scout-form");
 
 const downloadButton = document.getElementById("download-button");
 
+const autoSelect = document.getElementById("auto-start");
+
 const autoChargeOutput = document.getElementById("auto-charge");
 
 const scriptURL = "https://script.google.com/macros/s/AKfycbx_KXhLkJ02ADQLSjYrhh3qRcPjA5Dg15CQQQdMBWPEIdZS8XMCryygI_CT70E8r7GJNQ/exec";
@@ -153,6 +155,9 @@ scoutForm.addEventListener('submit', e => {
     let autoSpeakerPercent = Math.round(autoMadeSpeaker / (autoMadeSpeaker + autoMissedSpeaker) * 100);
     let teleSpeakerPercent = Math.round(teleMadeSpeaker / (teleMadeSpeaker + teleMissedSpeaker) * 100);
 
+    //alert("New code");
+    //alert(teleMadeSpeaker + teleMadeAmp)
+
     data = {
         "Name": nameInput.value,
         "Team Number": teamOutput,
@@ -189,7 +194,9 @@ scoutForm.addEventListener('submit', e => {
         "Intook From": intakeOutput,
         "Speaker Range": speakerShotRange.value,
         "Auto Speaker %": isNaN(autoSpeakerPercent) ? "N/A" : autoSpeakerPercent,
-        "Tele Speaker %": isNaN(teleSpeakerPercent) ? "N/A" : teleSpeakerPercent
+        "Tele Speaker %": isNaN(teleSpeakerPercent) ? "N/A" : teleSpeakerPercent,
+        "Auto Start": autoSelect.value,
+        "Gamepieces": (teleMadeSpeaker + teleMadeAmp)
     };
 
     console.log(data);
