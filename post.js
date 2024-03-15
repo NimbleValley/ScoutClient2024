@@ -158,7 +158,7 @@ scoutForm.addEventListener('submit', e => {
         "Team Number": teamOutput,
         "Alliance": allianceSelect.value,
         "Match Number": matchNumberOutput,
-        "Flip": teleFlipOutput,
+        "Too Tall": teleFlipOutput,
         "Lost Comms": teleCommsOutput,
         "Disabled": teleDisabledOutput,
         "Unintelligent": dumbOutput,
