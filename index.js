@@ -29,7 +29,7 @@ for (let i = 0; i < sections.length; i++) {
     sections[i].style.display = "none";
 }
 // TODO set this for debugging to set default screen
-sections[0].style.display = "flex";
+sections[5].style.display = "flex";
 
 
 // Alliance select element
