@@ -29,12 +29,20 @@ for (let i = 0; i < sections.length; i++) {
     sections[i].style.display = "none";
 }
 // TODO set this for debugging to set default screen
-sections[5].style.display = "flex";
+sections[0].style.display = "flex";
 
 
 // Alliance select element
 const allianceSelect = document.getElementById("alliance-select");
 
+const eventTeams = [1091,1259,1306,1675,1714,1732,1781,1792,2062,2077,2194,2202,2220,2358,2506,2667,2830,3197,3381,3596,3630,3692,3734,3891,4531,4645,4786,4787,5096,5148,537,5586,6223,6381,6421,6574,6643,6823,706,7103,7900,8029,8096,8531,8701,8744,8802,8847,93,930,9425,9535,9676,9760];
+const teamSelect = document.getElementById("team-select");
+for(let i = 0; i < eventTeams.length; i ++) {
+    let tempOption = document.createElement("option");
+    tempOption.innerText = eventTeams[i];
+    tempOption.value = eventTeams[i];
+    teamSelect.appendChild(tempOption);
+}
 
 // Auto note pickup
 const autoNoteImage = document.getElementById("auto-note-image");
@@ -385,7 +393,8 @@ climbSelect.addEventListener("change", function () {
         teleParkCheck.style.display = "none";
     }
     if(climbSelect.value == "Successful") {
-        climbSpeedContainer.style.display = "flex";
+        // TODO if you want it back it's here lol
+        climbSpeedContainer.style.display = "none";
     }
 });
 

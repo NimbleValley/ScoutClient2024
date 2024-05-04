@@ -147,10 +147,7 @@ scoutForm.addEventListener('submit', e => {
 
     let intakeOutput = pickupMethodSelect.value;
 
-    teamOutput = teamInput.value;
-    if(teamOutput == "" || teamOutput == " ") {
-        teamOutput = 0;
-    }
+    teamOutput = teamSelect.value;
 
     let autoSpeakerPercent = Math.round(autoMadeSpeaker / (autoMadeSpeaker + autoMissedSpeaker) * 100);
     let teleSpeakerPercent = Math.round(teleMadeSpeaker / (teleMadeSpeaker + teleMissedSpeaker) * 100);
@@ -222,7 +219,6 @@ scoutForm.addEventListener('submit', e => {
 });
 
 function resetForm() {
-    teamInput.value = "";
     matchInput.value = "";
     document.getElementById("comments-area").value = "";
     teleCharge = false;
