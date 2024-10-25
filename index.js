@@ -35,7 +35,7 @@ sections[0].style.display = "flex";
 // Alliance select element
 const allianceSelect = document.getElementById("alliance-select");
 
-const eventTeams = [1091,1259,1306,1675,1714,1732,1781,1792,2062,2077,2194,2202,2220,2358,2506,2667,2830,3197,3381,3596,3630,3692,3734,3891,4531,4645,4786,4787,5096,5148,537,5586,6223,6381,6421,6574,6643,6823,706,7103,7900,8029,8096,8531,8701,8744,8802,8847,93,930,9425,9535,9676,9760];
+const eventTeams = [111,112,930,1706,1756,1781,2940,2338,2481,2704,3061,3197,3596,4096,4143,4213,4256,4423,5125,5442,5847,6317,6421,6574,7117,7657,9082,9401,9988,9991,9995,9996,9997,9998,9999];
 const teamSelect = document.getElementById("team-select");
 for(let i = 0; i < eventTeams.length; i ++) {
     let tempOption = document.createElement("option");
@@ -506,7 +506,7 @@ function teleMissedAmpUpdate(num) {
         return;
     }
     teleMissedAmp += num;
-    teleMissedAmpText.innerText = `Missed Amp: ${teleMissedAmp}`;
+    teleMissedAmpText.innerText = `Passed: ${teleMissedAmp}`;
 }
 
 function teleMissedShotUpdate(num) {

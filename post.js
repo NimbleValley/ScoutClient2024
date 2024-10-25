@@ -179,7 +179,7 @@ scoutForm.addEventListener('submit', e => {
         "Tele Points": telePoints,
         "Tele Tech": teleTechOutput,
         "Tele Made Amp": teleMadeAmp,
-        "Tele Missed Amp": teleMissedAmp,
+        "Tele Passed": teleMissedAmp,
         "Tele Made Speaker": teleMadeSpeaker,
         "Tele Missed Speaker": teleMissedSpeaker,
         "Endgame Points": endgamePoints,
@@ -193,7 +193,7 @@ scoutForm.addEventListener('submit', e => {
         "Auto Speaker %": isNaN(autoSpeakerPercent) ? "N/A" : autoSpeakerPercent,
         "Tele Speaker %": isNaN(teleSpeakerPercent) ? "N/A" : teleSpeakerPercent,
         "Auto Start": autoSelect.value,
-        "Gamepieces": (teleMadeSpeaker + teleMadeAmp)
+        "Gamepieces": (teleMadeSpeaker + teleMadeAmp + teleMissedAmp + (teleMissedSpeaker * 0.5))
     };
 
     console.log(data);
@@ -254,7 +254,7 @@ function resetForm() {
     teleMadeAmp = 0;
     teleMadeAmpText.innerText = "Made Amplifier: 0";
     teleMissedAmp = 0;
-    teleMissedAmpText.innerText = "Missed Amplifier: 0";
+    teleMissedAmpText.innerText = "Passed: 0";
     teleMadeSpeaker = 0;
 
     teleMadeSpeaker = 0;
